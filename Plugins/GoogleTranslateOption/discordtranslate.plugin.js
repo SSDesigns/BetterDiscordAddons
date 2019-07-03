@@ -1,11 +1,11 @@
-//META{"name":"discordtranslate","website":"https://discord.gg/NMk2YGk","source":"https://discord.gg/NMk2YGk"}*//
+//META{"name":"GoogleTranslateOption","website":"https://github.com/mwittrien/BetterDiscordAddons/tree/master/Plugins/GoogleTranslateOption","source":"https://raw.githubusercontent.com/mwittrien/BetterDiscordAddons/master/Plugins/GoogleTranslateOption/GoogleTranslateOption.plugin.js"}*//
 
-class discordtranslate {
-	getName () {return "discordtranslate";}
+class GoogleTranslateOption {
+	getName () {return "GoogleTranslateOption";}
 
 	getVersion () {return "1.7.0";} 
 
-	getAuthor () {return "KHII";}
+	getAuthor () {return "DevilBro";}
 
 	getDescription () {return "Adds a Google Translate option to your context menu, which shows a preview of the translated text and on click will open the selected text in Google Translate. Also adds a translation button to your textareas, which will automatically translate the text for you before it is being send.";}
 
@@ -206,13 +206,13 @@ class discordtranslate {
 			libraryScript = document.createElement("script");
 			libraryScript.setAttribute("id", "BDFDBLibraryScript");
 			libraryScript.setAttribute("type", "text/javascript");
-			libraryScript.setAttribute("src", "https://github.com/SSDesigns/BetterDiscordAddons/blob/master/Plugins/BDFDB.js");
+			libraryScript.setAttribute("src", "https://mwittrien.github.io/BetterDiscordAddons/Plugins/BDFDB.js");
 			libraryScript.setAttribute("date", performance.now());
 			libraryScript.addEventListener("load", () => {this.initialize();});
 			document.head.appendChild(libraryScript);
 			this.libLoadTimeout = setTimeout(() => {
 				libraryScript.remove();
-				require("request")("https://ssdesigns.github.io/BetterDiscordAddons/Plugins/BDFDB.js", (error, response, body) => {
+				require("request")("https://mwittrien.github.io/BetterDiscordAddons/Plugins/BDFDB.js", (error, response, body) => {
 					if (body) {
 						libraryScript = document.createElement("script");
 						libraryScript.setAttribute("id", "BDFDBLibraryScript");
@@ -266,21 +266,21 @@ class discordtranslate {
 	changeLanguageStrings () {
 		this.messageTranslateContextEntryMarkup = 		this.messageTranslateContextEntryMarkup.replace("REPLACE_context_messagetranslateoption_text", this.labels.context_messagetranslateoption_text);
 		this.messageUntranslateContextEntryMarkup = 	this.messageUntranslateContextEntryMarkup.replace("REPLACE_context_messageuntranslateoption_text", this.labels.context_messageuntranslateoption_text);
-		this.messageSearchContextEntryMarkup = 			this.messageSearchContextEntryMarkup.replace("REPLACE_context_googletranslateoption_text", this.labels.context_discordtranslate_text);
+		this.messageSearchContextEntryMarkup = 			this.messageSearchContextEntryMarkup.replace("REPLACE_context_googletranslateoption_text", this.labels.context_googletranslateoption_text);
 
 		this.popoutTranslateEntryMarkup = 				this.popoutTranslateEntryMarkup.replace("REPLACE_popout_translateoption_text", this.labels.popout_translateoption_text);
 		this.popoutUntranslateEntryMarkup = 			this.popoutUntranslateEntryMarkup.replace("REPLACE_popout_untranslateoption_text", this.labels.popout_untranslateoption_text);
 	}
 
 	onMessageContextMenu (instance, menu) {
-		if (instance.props && instance.props.message && instance.props.channel && instance.props.target && !menu.querySelector(".discordtranslate-item")) {
+		if (instance.props && instance.props.message && instance.props.channel && instance.props.target && !menu.querySelector(".googletranslateoption-item")) {
 			let {messagediv, pos} = this.getMessageAndPos(instance.props.target);
 			if (!messagediv || pos == -1) return;
 			let pinentry = BDFDB.React.findDOMNodeSafe(BDFDB.getOwnerInstance({node:menu,name:"MessagePinItem"}));
 			let messageTranslateContextEntry = BDFDB.htmlToElement(BDFDB.containsClass(messagediv, "translated") ? this.messageUntranslateContextEntryMarkup : this.messageTranslateContextEntryMarkup);
 			if (pinentry) pinentry.parentElement.insertBefore(messageTranslateContextEntry, pinentry.nextElementSibling);
 			else menu.insertBefore(messageTranslateContextEntry, menu.firstElementChild);
-			let translateitem = messageTranslateContextEntry.querySelector(".discordtranslate-item");
+			let translateitem = messageTranslateContextEntry.querySelector(".googletranslateoption-item");
 			translateitem.addEventListener("click", () => {
 				BDFDB.closeContextMenu(menu);
 				this.translateMessage(instance.props.message, instance.props.target, instance.props.channel);
@@ -709,7 +709,7 @@ class discordtranslate {
 				return {
 					context_messagetranslateoption_text:	"Prijevod poruke",
 					context_messageuntranslateoption_text:	"Prijenos poruke",
-					context_discordtranslate_text:		"Traži prijevod",
+					context_googletranslateoption_text:		"Traži prijevod",
 					popout_translateoption_text:			"Prevesti",
 					popout_untranslateoption_text:			"Prevesti natrag",
 					translated_watermark_text:				"preveo"
@@ -718,7 +718,7 @@ class discordtranslate {
 				return {
 					context_messagetranslateoption_text:	"Oversæt Besked",
 					context_messageuntranslateoption_text:	"Oversæt Besked tilbage",
-					context_discordtranslate_text:		"Søg oversættelse",
+					context_googletranslateoption_text:		"Søg oversættelse",
 					popout_translateoption_text:			"Oversætte",
 					popout_untranslateoption_text:			"Oversæt tilbage",
 					translated_watermark_text:				"oversat"
@@ -727,7 +727,7 @@ class discordtranslate {
 				return {
 					context_messagetranslateoption_text:	"Nachricht übersetzen",
 					context_messageuntranslateoption_text:	"Nachricht unübersetzen",
-					context_discordtranslate_text:		"Suche Übersetzung",
+					context_googletranslateoption_text:		"Suche Übersetzung",
 					popout_translateoption_text:			"Übersetzen",
 					popout_untranslateoption_text:			"Unübersetzen",
 					translated_watermark_text:				"übersetzt"
@@ -736,7 +736,7 @@ class discordtranslate {
 				return {
 					context_messagetranslateoption_text:	"Traducir mensaje",
 					context_messageuntranslateoption_text:	"Traducir mensaje de vuelta",
-					context_discordtranslate_text:		"Buscar traducción",
+					context_googletranslateoption_text:		"Buscar traducción",
 					popout_translateoption_text:			"Traducir",
 					popout_untranslateoption_text:			"Traducir de vuelta",
 					translated_watermark_text:				"traducido"
@@ -745,7 +745,7 @@ class discordtranslate {
 				return {
 					context_messagetranslateoption_text:	"Traduire le message",
 					context_messageuntranslateoption_text:	"Traduire le message en retour",
-					context_discordtranslate_text:		"Rechercher une traduction",
+					context_googletranslateoption_text:		"Rechercher une traduction",
 					popout_translateoption_text:			"Traduire",
 					popout_untranslateoption_text:			"Traduire en arrière",
 					translated_watermark_text:				"traduit"
@@ -754,7 +754,7 @@ class discordtranslate {
 				return {
 					context_messagetranslateoption_text:	"Tradurre il messaggio",
 					context_messageuntranslateoption_text:	"Tradurre il messaggio indietro",
-					context_discordtranslate_text:		"Cerca la traduzione",
+					context_googletranslateoption_text:		"Cerca la traduzione",
 					popout_translateoption_text:			"Traduci",
 					popout_untranslateoption_text:			"Traduci indietro",
 					translated_watermark_text:				"tradotto"
@@ -763,7 +763,7 @@ class discordtranslate {
 				return {
 					context_messagetranslateoption_text:	"Vertaal bericht",
 					context_messageuntranslateoption_text:	"Vertaal bericht terug",
-					context_discordtranslate_text:		"Zoek vertaling",
+					context_googletranslateoption_text:		"Zoek vertaling",
 					popout_translateoption_text:			"Vertaal",
 					popout_untranslateoption_text:			"Vertaal terug",
 					translated_watermark_text:				"vertaalde"
@@ -772,7 +772,7 @@ class discordtranslate {
 				return {
 					context_messagetranslateoption_text:	"Oversett melding",
 					context_messageuntranslateoption_text:	"Oversett melding tilbake",
-					context_discordtranslate_text:		"Søk oversettelse",
+					context_googletranslateoption_text:		"Søk oversettelse",
 					popout_translateoption_text:			"Oversett",
 					popout_untranslateoption_text:			"Oversett tilbake",
 					translated_watermark_text:				"oversatt"
@@ -781,7 +781,7 @@ class discordtranslate {
 				return {
 					context_messagetranslateoption_text:	"Przetłumacz wiadomość",
 					context_messageuntranslateoption_text:	"Przetłumacz wiadomość z powrotem",
-					context_discordtranslate_text:		"Wyszukaj tłumaczenie",
+					context_googletranslateoption_text:		"Wyszukaj tłumaczenie",
 					popout_translateoption_text:			"Przetłumacz",
 					popout_untranslateoption_text:			"Przetłumacz ponownie",
 					translated_watermark_text:				"przetłumaczony"
@@ -790,7 +790,7 @@ class discordtranslate {
 				return {
 					context_messagetranslateoption_text:	"Traduzir mensagem",
 					context_messageuntranslateoption_text:	"Traduzir mensagem de volta",
-					context_discordtranslate_text:		"Pesquisar tradução",
+					context_googletranslateoption_text:		"Pesquisar tradução",
 					popout_translateoption_text:			"Traduzir",
 					popout_untranslateoption_text:			"Traduzir de volta",
 					translated_watermark_text:				"traduzido"
@@ -799,7 +799,7 @@ class discordtranslate {
 				return {
 					context_messagetranslateoption_text:	"Käännä viesti",
 					context_messageuntranslateoption_text:	"Käännä viesti takaisin",
-					context_discordtranslate_text:		"Etsi käännös",
+					context_googletranslateoption_text:		"Etsi käännös",
 					popout_translateoption_text:			"Kääntää",
 					popout_untranslateoption_text:			"Käännä takaisin",
 					translated_watermark_text:				"käännetty"
@@ -808,7 +808,7 @@ class discordtranslate {
 				return {
 					context_messagetranslateoption_text:	"Översätt meddelande",
 					context_messageuntranslateoption_text:	"Översätt meddelandet tillbaka",
-					context_discordtranslate_text:		"Sök översättning",
+					context_googletranslateoption_text:		"Sök översättning",
 					popout_translateoption_text:			"Översätt",
 					popout_untranslateoption_text:			"Översätt tillbaka",
 					translated_watermark_text:				"översatt"
@@ -817,7 +817,7 @@ class discordtranslate {
 				return {
 					context_messagetranslateoption_text:	"Mesajı çevir",
 					context_messageuntranslateoption_text:	"İletiyi geri çevir",
-					context_discordtranslate_text:		"Arama tercümesi",
+					context_googletranslateoption_text:		"Arama tercümesi",
 					popout_translateoption_text:			"Çevirmek",
 					popout_untranslateoption_text:			"Geri çevir",
 					translated_watermark_text:				"tercüme"
@@ -826,7 +826,7 @@ class discordtranslate {
 				return {
 					context_messagetranslateoption_text:	"Přeposlat zprávu",
 					context_messageuntranslateoption_text:	"Přeposlat zprávu zpátky",
-					context_discordtranslate_text:		"Hledat překlad",
+					context_googletranslateoption_text:		"Hledat překlad",
 					popout_translateoption_text:			"Přeposlat",
 					popout_untranslateoption_text:			"Přeposlat zpět",
 					translated_watermark_text:				"přeloženo"
@@ -835,7 +835,7 @@ class discordtranslate {
 				return {
 					context_messagetranslateoption_text:	"Преведете на съобщението",
 					context_messageuntranslateoption_text:	"Преведете съобщението обратно",
-					context_discordtranslate_text:		"Търсене на превод",
+					context_googletranslateoption_text:		"Търсене на превод",
 					popout_translateoption_text:			"Превод",
 					popout_untranslateoption_text:			"Превод обратно",
 					translated_watermark_text:				"преведена"
@@ -844,7 +844,7 @@ class discordtranslate {
 				return {
 					context_messagetranslateoption_text:	"Перевести сообщение",
 					context_messageuntranslateoption_text:	"Перевести сообщение обратно",
-					context_discordtranslate_text:		"Поиск перевода",
+					context_googletranslateoption_text:		"Поиск перевода",
 					popout_translateoption_text:			"Перевести",
 					popout_untranslateoption_text:			"Перевести обратно",
 					translated_watermark_text:				"переведенный"
@@ -853,7 +853,7 @@ class discordtranslate {
 				return {
 					context_messagetranslateoption_text:	"Перекласти повідомлення",
 					context_messageuntranslateoption_text:	"Перекласти повідомлення назад",
-					context_discordtranslate_text:		"Пошук перекладу",
+					context_googletranslateoption_text:		"Пошук перекладу",
 					popout_translateoption_text:			"Перекласти",
 					popout_untranslateoption_text:			"Перекласти назад",
 					translated_watermark_text:				"перекладений"
@@ -862,7 +862,7 @@ class discordtranslate {
 				return {
 					context_messagetranslateoption_text:	"メッセージを翻訳する",
 					context_messageuntranslateoption_text:	"メッセージを翻訳する",
-					context_discordtranslate_text:		"翻訳の検索",
+					context_googletranslateoption_text:		"翻訳の検索",
 					popout_translateoption_text:			"翻訳",
 					popout_untranslateoption_text:			"翻訳する",
 					translated_watermark_text:				"翻訳された"
@@ -871,7 +871,7 @@ class discordtranslate {
 				return {
 					context_messagetranslateoption_text:	"翻譯消息",
 					context_messageuntranslateoption_text:	"翻譯消息",
-					context_discordtranslate_text:		"搜索翻譯",
+					context_googletranslateoption_text:		"搜索翻譯",
 					popout_translateoption_text:			"翻譯",
 					popout_untranslateoption_text:			"翻譯回來",
 					translated_watermark_text:				"翻譯"
@@ -880,7 +880,7 @@ class discordtranslate {
 				return {
 					context_messagetranslateoption_text:	"메시지 번역",
 					context_messageuntranslateoption_text:	"메시지 번역 뒤로",
-					context_discordtranslate_text:		"검색 번역",
+					context_googletranslateoption_text:		"검색 번역",
 					popout_translateoption_text:			"다시",
 					popout_untranslateoption_text:			"다시 번역",
 					translated_watermark_text:				"번역 된"
@@ -889,7 +889,7 @@ class discordtranslate {
 				return {
 					context_messagetranslateoption_text:	"Translate Message",
 					context_messageuntranslateoption_text:	"Untranslate Message",
-					context_discordtranslate_text:		"Search translation",
+					context_googletranslateoption_text:		"Search translation",
 					popout_translateoption_text:			"Translate",
 					popout_untranslateoption_text:			"Untranslate",
 					translated_watermark_text:				"translated"
