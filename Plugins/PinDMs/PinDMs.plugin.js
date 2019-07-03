@@ -1,17 +1,17 @@
-//META{"name":"PinDMs","website":"https://github.com/mwittrien/BetterDiscordAddons/tree/master/Plugins/PinDMs","source":"https://raw.githubusercontent.com/mwittrien/BetterDiscordAddons/master/Plugins/PinDMs/PinDMs.plugin.js"}*//
+//META{"name":"PinDMs","website":"https://discord.gg/jGZgwZS","source":"https://raw.githubusercontent.com/SSDesigns/BetterDiscordAddons/master/Plugins/PinDMs/PinDMs.plugin.js"}*//
 
 class PinDMs {
 	getName () {return "PinDMs";}
 
 	getVersion () {return "1.4.2";}
 
-	getAuthor () {return "DevilBro";}
+	getAuthor () {return "KHIIBOTS";}
 
 	getDescription () {return "Allows you to pin DMs, making them appear at the top of your DMs/Guild-list.";}
 
 	initConstructor () {
 		this.changelog = {
-			"fixed":[["Unread Pill","Fuck those new hover animations REEEEEE"]]
+			"fixed":[["Unread Pill"," Fixed Issues of being unable to pin somone to DM, due to discord CSS Changes. -Khii "]]
 		};
 		
 		this.patchModules = {
@@ -187,13 +187,13 @@ class PinDMs {
 			libraryScript = document.createElement("script");
 			libraryScript.setAttribute("id", "BDFDBLibraryScript");
 			libraryScript.setAttribute("type", "text/javascript");
-			libraryScript.setAttribute("src", "https://mwittrien.github.io/BetterDiscordAddons/Plugins/BDFDB.js");
+			libraryScript.setAttribute("src", "https://SSDesigns.github.io/BetterDiscordAddons/Plugins/BDFDB.js");
 			libraryScript.setAttribute("date", performance.now());
 			libraryScript.addEventListener("load", () => {this.initialize();});
 			document.head.appendChild(libraryScript);
 			this.libLoadTimeout = setTimeout(() => {
 				libraryScript.remove();
-				require("request")("https://mwittrien.github.io/BetterDiscordAddons/Plugins/BDFDB.js", (error, response, body) => {
+				require("request")("https://SSDesigns.github.io/BetterDiscordAddons/Plugins/BDFDB.js", (error, response, body) => {
 					if (body) {
 						libraryScript = document.createElement("script");
 						libraryScript.setAttribute("id", "BDFDBLibraryScript");
