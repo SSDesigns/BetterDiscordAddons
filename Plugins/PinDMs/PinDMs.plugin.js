@@ -1,17 +1,17 @@
-//META{"name":"PinDMs","website":"https://discord.gg/jGZgwZS","source":"https://raw.githubusercontent.com/SSDesigns/BetterDiscordAddons/master/Plugins/PinDMs/PinDMs.plugin.js"}*//
+//META{"name":"PinDMs","website":"https://discord.gg/jGZgwZS","source":"https://discord.gg/jGZgwZS"}*//
 
 class PinDMs {
 	getName () {return "PinDMs";}
 
-	getVersion () {return "1.4.2";}
+	getVersion () {return "1.4.5";}
 
-	getAuthor () {return "KHIIBOTS";}
+	getAuthor () {return "KHII";}
 
 	getDescription () {return "Allows you to pin DMs, making them appear at the top of your DMs/Guild-list.";}
 
 	initConstructor () {
 		this.changelog = {
-			"fixed":[["Unread Pill"," Fixed Issues of being unable to pin somone to DM, due to discord CSS Changes. -Khii "]]
+			"fixed":[["Pinned DMs","Changed to new DM classes"]]
 		};
 		
 		this.patchModules = {
@@ -78,34 +78,36 @@ class PinDMs {
 					<div class="${BDFDB.disCNS.guildpillwrapper + BDFDB.disCN.dmpill}">
 						<span class="${BDFDB.disCN.guildpillitem}" style="opacity: 0; height: 8px; transform: translate3d(0px, 0px, 0px);"></span>
 					</div>
-					<div tabindex="0" class="${BDFDB.disCNS.dmcontainer + BDFDB.disCN.guildinner}" role="button">
-						<svg width="48" height="48" viewBox="0 0 48 48" class="${BDFDB.disCN.guildsvg}">
-							<mask id="" fill="black" x="0" y="0" width="48" height="48">
-								<path d="M0 0 l50 0l0 50l-50 0l0 -50Z" fill="white"></path>
-								<rect x="28" y="-4" width="24" height="24" rx="12" ry="12" transform="translate(0 0)" fill="black"></rect>
-								<rect x="28" y="28" width="24" height="24" rx="12" ry="12" transform="translate(-20 20)" fill="black"></rect>
-							</mask>
-							<foreignObject mask="" x="0" y="0" width="48" height="48">
-								<a class="${BDFDB.disCN.guildiconwrapper}" draggable="false" style="border-radius: 50%;">
-									<img class="${BDFDB.disCN.guildicon}" src="" width="48" height="48" draggable="false"></img>
-								</a>
-							</foreignObject>
-						</svg>
-						<div class="${BDFDB.disCN.guildbadgewrapper}">
-							<div class="${BDFDB.disCN.guildupperbadge} pin-badge" style="opacity: 1; transform: translate(0px, 0px);">
-								<div class="${BDFDB.disCNS.guildbadgeiconbadge + BDFDB.disCN.guildbadgeiconbadge2}" style="width: 16px; padding-right: 1px;">
-									<svg class="${BDFDB.disCN.guildbadgeicon}" name="Nova_Pin" width="24" height="24" viewBox="0 0 520 520">
-										<g fill="white">
-											<path d="M291.31, 402.761L109.241, 220.693C79.073, 190.525, 30.166, 190.526, 0, 220.692l291.31, 291.31C321.474, 481.835, 321.476, 432.927, 291.31, 402.761z"></path>
-											<polygon points="273.104, 111.449 154.758, 211.589 300.412, 357.242 400.55, 238.898"></polygon>
-											<path d="M500.688, 175.174L336.827, 11.313c-15.085-15.085-39.539-15.083-54.621, 0c-15.082, 15.082-15.082, 39.538, 0, 54.62 l163.861, 163.861c15.083, 15.085, 39.539, 15.085, 54.621, 0.001C515.773, 214.712, 515.773, 190.257, 500.688, 175.174z"></path>
-											<polygon points="91.032, 366.346 0, 512 145.655, 420.967"></polygon>
-										</g>
-									</svg>
+					<div class="${BDFDB.disCN.guildinnerwrapper}">
+						<div class="${BDFDB.disCN.guildinner}">
+							<svg width="48" height="48" viewBox="0 0 48 48" class="${BDFDB.disCN.guildsvg}">
+								<mask id="" fill="black" x="0" y="0" width="48" height="48">
+									<path d="M0 0 l50 0l0 50l-50 0l0 -50Z" fill="white"></path>
+									<rect x="28" y="-4" width="24" height="24" rx="12" ry="12" transform="translate(0 0)" fill="black"></rect>
+									<rect x="28" y="28" width="24" height="24" rx="12" ry="12" transform="translate(-20 20)" fill="black"></rect>
+								</mask>
+								<foreignObject mask="" x="0" y="0" width="48" height="48">
+									<a class="${BDFDB.disCN.guildiconwrapper}" draggable="false" style="border-radius: 50%;">
+										<img class="${BDFDB.disCN.guildicon}" src="" width="48" height="48" draggable="false"></img>
+									</a>
+								</foreignObject>
+							</svg>
+							<div class="${BDFDB.disCN.guildbadgewrapper}">
+								<div class="${BDFDB.disCN.guildupperbadge} pin-badge" style="opacity: 1; transform: translate(0px, 0px);">
+									<div class="${BDFDB.disCNS.guildbadgeiconbadge + BDFDB.disCN.guildbadgeiconbadge2}" style="width: 16px; padding-right: 1px;">
+										<svg class="${BDFDB.disCN.guildbadgeicon}" name="Nova_Pin" width="24" height="24" viewBox="0 0 520 520">
+											<g fill="white">
+												<path d="M291.31, 402.761L109.241, 220.693C79.073, 190.525, 30.166, 190.526, 0, 220.692l291.31, 291.31C321.474, 481.835, 321.476, 432.927, 291.31, 402.761z"></path>
+												<polygon points="273.104, 111.449 154.758, 211.589 300.412, 357.242 400.55, 238.898"></polygon>
+												<path d="M500.688, 175.174L336.827, 11.313c-15.085-15.085-39.539-15.083-54.621, 0c-15.082, 15.082-15.082, 39.538, 0, 54.62 l163.861, 163.861c15.083, 15.085, 39.539, 15.085, 54.621, 0.001C515.773, 214.712, 515.773, 190.257, 500.688, 175.174z"></path>
+												<polygon points="91.032, 366.346 0, 512 145.655, 420.967"></polygon>
+											</g>
+										</svg>
+									</div>
 								</div>
-							</div>
-							<div class="${BDFDB.disCN.guildlowerbadge}" style="opacity: 1; transform: translate(0px, 0px); display: none;">
-								<div class="${BDFDB.disCN.guildbadgenumberbadge}" style="background-color: rgb(240, 71, 71); width: 16px; padding-right: 1px;">0</div>
+								<div class="${BDFDB.disCN.guildlowerbadge}" style="opacity: 1; transform: translate(0px, 0px); display: none;">
+									<div class="${BDFDB.disCN.guildbadgenumberbadge}" style="background-color: rgb(240, 71, 71); width: 16px; padding-right: 1px;">0</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -118,16 +120,18 @@ class PinDMs {
 					<div class="${BDFDB.disCNS.guildpillwrapper + BDFDB.disCN.dmpill}">
 						<span class="${BDFDB.disCN.guildpillitem}"></span>
 					</div>
-					<div tabindex="0" class="${BDFDB.disCNS.dmcontainer + BDFDB.disCN.guildinner}" role="button">
-						<svg width="48" height="48" viewBox="0 0 48 48" class="${BDFDB.disCN.guildsvg}">
-							<mask id="PINDMSDRAG" fill="black" x="0" y="0" width="48" height="48">
-								<path d="M48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24Z" fill="white"></path>
-							</mask>
-							<foreignObject mask="url(#PINDMSDRAG)" x="0" y="0" width="48" height="48">
-								<div class="${BDFDB.disCN.guildplaceholder}"></div>
-							</foreignObject>
-						</svg>
-						<div class="${BDFDB.disCN.guildbadgewrapper}"></div>
+					<div class="${BDFDB.disCN.guildinnerwrapper}">
+						<div class="${BDFDB.disCN.guildinner}">
+							<svg width="48" height="48" viewBox="0 0 48 48" class="${BDFDB.disCN.guildsvg}">
+								<mask id="PINDMSDRAG" fill="black" x="0" y="0" width="48" height="48">
+									<path d="M48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24Z" fill="white"></path>
+								</mask>
+								<foreignObject mask="url(#PINDMSDRAG)" x="0" y="0" width="48" height="48">
+									<div class="${BDFDB.disCN.guildplaceholder}"></div>
+								</foreignObject>
+							</svg>
+							<div class="${BDFDB.disCN.guildbadgewrapper}"></div>
+						</div>
 					</div>
 				</div>
 			</div>`;
@@ -187,13 +191,13 @@ class PinDMs {
 			libraryScript = document.createElement("script");
 			libraryScript.setAttribute("id", "BDFDBLibraryScript");
 			libraryScript.setAttribute("type", "text/javascript");
-			libraryScript.setAttribute("src", "https://SSDesigns.github.io/BetterDiscordAddons/Plugins/BDFDB.js");
+			libraryScript.setAttribute("src", "https://github.com/SSDesigns/BetterDiscordAddons/blob/master/Plugins/BDFDB.js");
 			libraryScript.setAttribute("date", performance.now());
 			libraryScript.addEventListener("load", () => {this.initialize();});
 			document.head.appendChild(libraryScript);
 			this.libLoadTimeout = setTimeout(() => {
 				libraryScript.remove();
-				require("request")("https://SSDesigns.github.io/BetterDiscordAddons/Plugins/BDFDB.js", (error, response, body) => {
+				require("request")("https://ssdesigns.github.io/BetterDiscordAddons/Plugins/BDFDB.js", (error, response, body) => {
 					if (body) {
 						libraryScript = document.createElement("script");
 						libraryScript.setAttribute("id", "BDFDBLibraryScript");
@@ -443,7 +447,10 @@ class PinDMs {
 			}
 			let pinnedRecents = BDFDB.loadAllData(this, "pinnedRecents");
 			if (pinnedRecents[instance.props.channel.id] != undefined) {
-				if (methodnames.includes("componentDidMount")) this.hideNativeDM(instance.props.channel.id);
+				if (methodnames.includes("componentDidMount")) {
+					if (!document.querySelector(`.pinned-dm[channelid="${instance.props.channel.id}"]`)) this.addPinnedRecent(instance.props.channel.id);
+					else this.hideNativeDM(instance.props.channel.id);
+				}
 				this.updatePinnedRecent(instance.props.channel.id);
 			}
 		}
@@ -567,7 +574,7 @@ class PinDMs {
 			let info = this.ChannelUtils.getChannel(id);
 			if (info) {
 				let dmdiv = BDFDB.htmlToElement(this.recentDMMarkup);
-				let dmdivinner = dmdiv.querySelector(BDFDB.dotCN.dmcontainer);
+				let dmdivinner = dmdiv.querySelector(BDFDB.dotCN.guildinnerwrapper);
 				let dmiconwrapper = dmdiv.querySelector(BDFDB.dotCN.guildiconwrapper);
 				dmiconwrapper.style.setProperty("border-radius", this.CurrentChannelStore.getChannelId() == id ? "30%" : "50%");
 				dmiconwrapper.style.setProperty("overflow", "hidden");
@@ -584,16 +591,21 @@ class PinDMs {
 						dmname = dmname + this.UserUtils.getUser(dmuser_id).username;
 					}
 				}
-				let EditUsersData = user && BDFDB.isPluginEnabled("EditUsers") ? bdplugins.EditUsers.plugin.getUserData(user.id, dmdiv) : {};
+				let EditUsersData = user && BDFDB.isPluginEnabled("EditUsers") ? window.bdplugins.EditUsers.plugin.getUserData(user.id, dmdiv) : {};
 				if (!EditUsersData.removeIcon) avatar.setAttribute("src", `${EditUsersData.url || BDFDB.getChannelIcon(id)}`);
 				avatar.setAttribute("channel", dmname);
 				if (user) avatar.setAttribute("user", user.username);
 				dmdivinner.addEventListener("mouseenter", () => {
-					let FreshEditUsersData = user && BDFDB.isPluginEnabled("EditUsers") ? bdplugins.EditUsers.plugin.getUserData(user.id, dmdiv) : {};
+					let FreshEditUsersData = user && BDFDB.isPluginEnabled("EditUsers") ? window.bdplugins.EditUsers.plugin.getUserData(user.id, dmdiv) : {};
 					BDFDB.createTooltip(FreshEditUsersData.name || dmname, dmdivinner, {selector:(BDFDB.isObjectEmpty(FreshEditUsersData) ? "" : "EditUsers-tooltip"),type:"right"});
 				});
 				avatar.parentElement.addEventListener("click", e => {
-					this.ChannelSwitchUtils.selectPrivateChannel(id);
+					if (user) {
+						let DMid = this.ChannelUtils.getDMFromUserId(user.id)
+						if (DMid) this.ChannelSwitchUtils.selectPrivateChannel(DMid);
+						else this.PrivateChannelUtils.openPrivateChannel(BDFDB.myData.id, user.id);
+					}
+					else this.ChannelSwitchUtils.selectPrivateChannel(id);
 					BDFDB.stopEvent(e);
 				});
 				avatar.parentElement.addEventListener("contextmenu", e => {
@@ -729,7 +741,7 @@ class PinDMs {
 	}
 
 	addHoverBehaviour (div, id) {
-		let divinner = div.querySelector(BDFDB.dotCN.dmcontainer);
+		let divinner = div.querySelector(BDFDB.dotCN.guildinnerwrapper);
 		let diviconwrapper = div.querySelector(BDFDB.dotCN.guildiconwrapper);
 		let divpillitem = div.querySelector(BDFDB.dotCN.guildpillitem);
 		
