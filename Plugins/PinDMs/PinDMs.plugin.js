@@ -1,4 +1,4 @@
-//META{"name":"PinDMs","website":"https://discord.gg/jGZgwZS","source":"https://discord.gg/jGZgwZS"}*//
+//META{"name":"PinDMs","website":"https://discord.gg/jGZgwZS","source":"https://raw.githubusercontent.com/SSDesigns/BetterDiscordAddons/master/Plugins/PinDMs/PinDMs.plugin.js"}*//
 
 class PinDMs {
 	getName () {return "PinDMs";}
@@ -11,7 +11,7 @@ class PinDMs {
 
 	initConstructor () {
 		this.changelog = {
-			"fixed":[["Pinned DMs","Changed to new DM classes"]]
+			"fixed":[["Pinned DMs","Changed to new DM classes -KHII"]]
 		};
 		
 		this.patchModules = {
@@ -191,13 +191,13 @@ class PinDMs {
 			libraryScript = document.createElement("script");
 			libraryScript.setAttribute("id", "BDFDBLibraryScript");
 			libraryScript.setAttribute("type", "text/javascript");
-			libraryScript.setAttribute("src", "https://github.com/SSDesigns/BetterDiscordAddons/blob/master/Plugins/BDFDB.js");
+			libraryScript.setAttribute("src", "https://mwittrien.github.io/BetterDiscordAddons/Plugins/BDFDB.js");
 			libraryScript.setAttribute("date", performance.now());
 			libraryScript.addEventListener("load", () => {this.initialize();});
 			document.head.appendChild(libraryScript);
 			this.libLoadTimeout = setTimeout(() => {
 				libraryScript.remove();
-				require("request")("https://ssdesigns.github.io/BetterDiscordAddons/Plugins/BDFDB.js", (error, response, body) => {
+				require("request")("https://mwittrien.github.io/BetterDiscordAddons/Plugins/BDFDB.js", (error, response, body) => {
 					if (body) {
 						libraryScript = document.createElement("script");
 						libraryScript.setAttribute("id", "BDFDBLibraryScript");
