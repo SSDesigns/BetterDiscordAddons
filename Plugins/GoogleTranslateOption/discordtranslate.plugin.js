@@ -1,5 +1,4 @@
-//META{"name":"GoogleTranslateOption","website":"https://discord.gg/Tt9pwEj",}*//
-
+//META{"name":"GoogleTranslateOption","website":"https://discord.gg/Tt9pwEj","source":"https://discord.gg/Tt9pwEj"}*//
 class GoogleTranslateOption {
 	getName () {return "GoogleTranslateOption";}
 
